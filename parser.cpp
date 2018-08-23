@@ -1,21 +1,66 @@
 class Parser
 {
     public:
-        Parser(char [], char [], bool);
+        Parser();
+        Parser(char, char = '\0', bool = false);
+        Parser(char, char *, bool = false);
+        Parser(char *, char = '\0', bool = false);
+        Parser(char *, char *, bool = false);
         ~Parser();
     private:
+        void parsing(char *, char *, bool);
         unsigned int size;
         char ** token;
 };
 
-Parser::Parser(char string[], char symbol[], bool inclusive)
+Parser::Parser()
+{
+    size, token = 0;
+}
+
+Parser::Parser(char string, char symbol, bool inclusive)
+{
+    size, token = 0;
+
+    char stringTemplate[2] = {string, '\0'};
+    char symbolTemplate[2] = {symbol, '\0'};
+
+    parsing(stringTemplate, symbolTemplate, inclusive);
+}
+
+Parser::Parser(char string, char * symbol, bool inclusive)
+{
+    size, token = 0;
+
+    char stringTemplate[2] = {string, '\0'};
+
+    parsing(stringTemplate, symbol, inclusive);
+}
+
+Parser::Parser(char * string, char symbol, bool inclusive)
+{
+    size, token = 0;
+
+    char symbolTemplate[2] = {symbol, '\0'};
+
+    parsing(string, symbolTemplate, inclusive);
+}
+
+Parser::Parser(char * string, char * symbol, bool inclusive)
+{
+    size, token = 0;
+
+    parsing(string, symbol, inclusive);
+}
+
+void Parser::parsing(char * string, char * symbol, bool inclusive)
 {
     unsigned int stringAt = 0;
-    
-    size = 0;
-    while(string[stringAt] != '\0')
+
+    while(*(string + stringAt) != '\0')
     {
         size++;
+        stringAt++;
     }
 
     char * tokenTemplate[size + 1] = {0};
@@ -26,9 +71,9 @@ Parser::Parser(char string[], char symbol[], bool inclusive)
     {
         unsigned int symbolAt = 0;
 
-        while(symbol[symbolAt] != '\0')
+        while(*(symbol + symbolAt) != '\0')
         {
-            if(string[stringAt] == symbol[symbolAt])
+            if(*(string + stringAt) == *(symbol + symbolAt) )
             {
                 if(lineTemplateAt != 0)
                 {
@@ -39,7 +84,9 @@ Parser::Parser(char string[], char symbol[], bool inclusive)
                         lineSize++;
                         copyAt++;
                     }
+
                     tokenTemplate[tokenTemplateAt] = new char [lineSize + 1];
+
                     for(copyAt = 0; copyAt < lineSize + 1; copyAt++)
                     {
                         *(tokenTemplate[tokenTemplateAt] + copyAt) = lineTemplate[copyAt];
@@ -49,7 +96,8 @@ Parser::Parser(char string[], char symbol[], bool inclusive)
                 }
                 if(inclusive)
                 {
-                    tokenTemplate[tokenTemplateAt] = new char [2] {string[stringAt], '\0'};
+                    tokenTemplate[tokenTemplateAt] = new char [2] {*(string + stringAt), '\0'};
+
                     tokenTemplateAt++;
                 }
                 stringAt++;
@@ -60,7 +108,7 @@ Parser::Parser(char string[], char symbol[], bool inclusive)
         }
         if(stringAt < size)
         {
-            lineTemplate[lineTemplateAt] = string[stringAt];
+            lineTemplate[lineTemplateAt] = *(string + stringAt);
             lineTemplateAt++;
         }
     }
@@ -73,7 +121,9 @@ Parser::Parser(char string[], char symbol[], bool inclusive)
             lineSize++;
             copyAt++;
         }
-        tokenTemplate[tokenTemplateAt] = new char[lineSize + 1];
+
+        tokenTemplate[tokenTemplateAt] = new char [lineSize + 1];
+
         for(copyAt = 0; copyAt < lineSize + 1; copyAt++)
         {
             *(tokenTemplate[tokenTemplateAt] + copyAt) = lineTemplate[copyAt];
@@ -86,6 +136,14 @@ Parser::Parser(char string[], char symbol[], bool inclusive)
     }
     if(size > 0)
     {
+        token = new char * [size];
 
+        for(copyAt = 0; copyAt < size; copyAt++)
+        {
+            *(token + copyAt) = tokenTemplate[copyAt];
+        }
+    } else
+    {
+        token = 0;
     }
 }
