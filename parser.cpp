@@ -7,6 +7,8 @@ class Parser
         Parser(char *, char = '\0', bool = false);
         Parser(char *, char *, bool = false);
         ~Parser();
+        char * at(unsigned int);
+        int count();
     private:
         void parsing(char *, char *, bool);
         unsigned int size;
@@ -51,6 +53,33 @@ Parser::Parser(char * string, char * symbol, bool inclusive)
     size, token = 0;
 
     parsing(string, symbol, inclusive);
+}
+
+Parser::~Parser()
+{
+    for(unsigned int index = 0; index < size; index++)
+    {
+        delete[] *(token + index);
+    }
+    if(size > 0)
+    {
+        delete[] token;
+    }
+}
+
+char * Parser::at(unsigned int index)
+{
+    if(index < size)
+    {
+        return *(token + index);
+    }
+    
+    return 0;
+}
+
+int Parser::count()
+{
+    return size;
 }
 
 void Parser::parsing(char * string, char * symbol, bool inclusive)
