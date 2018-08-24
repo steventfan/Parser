@@ -1,19 +1,5 @@
-class Parser
-{
-    public:
-        Parser();
-        Parser(char, char = '\0', bool = false);
-        Parser(char, char *, bool = false);
-        Parser(char *, char = '\0', bool = false);
-        Parser(char *, char *, bool = false);
-        ~Parser();
-        char * at(unsigned int);
-        int count();
-    private:
-        void parsing(char *, char *, bool);
-        unsigned int size;
-        char ** token;
-};
+#include <iostream>
+#include "parser.h"
 
 Parser::Parser()
 {
