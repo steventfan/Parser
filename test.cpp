@@ -6,33 +6,34 @@ int main()
 {
     std::string input = "Hello World !";
     std::string symbol = " ";
-    char inputArray[input.size() + 1];
-    char symbolArray[symbol.size() + 1];
+    bool inclusive = false;
+    char * inputArray = new char [input.size() + 1];
+    char * symbolArray = new char [symbol.size() + 1];
     unsigned int index = 0;
 
     for(index = 0; index < input.size(); index++)
     {
-        inputArray[index] = input.at(index);
+        *(inputArray + index) = input.at(index);
     }
-    inputArray[index] = '\0';
+    *(inputArray + index) = '\0';
     for(index = 0; index < symbol.size(); index++)
     {
-        symbolArray[index] = symbol.at(index);
+        *(symbolArray + index) = symbol.at(index);
     }
-    symbolArray[index] = '\0';
-    std::cout << "Input String:" << std::endl;
-    for(unsigned int i = 0; i < input.size() + 1; i++)
+    *(symbolArray + index) = '\0';
+    std::cout << "~~~ Input String: ~~~" << std::endl;
+    for(index = 0; index < input.size() + 1; index++)
     {
-        std::cout << inputArray[i];
+        std::cout << *(inputArray + index);
     }
-    std::cout << std::endl << "Parsed Symbols:" << std::endl;
-    for(unsigned int i = 0; i < symbol.size() + 1; i++)
+    std::cout << std::endl << "~~~ Parsed Symbols: ~~~" << std::endl;
+    for(index = 0; index < symbol.size() + 1; index++)
     {
-        std::cout << symbolArray[i];
+        std::cout << *(symbolArray + index);
     }
-    std::cout << std::endl;
+    std::cout << std::endl << std::endl << "~~~ Parsed Sentece: ~~~" << std::endl;
 
-    Parser * parsed = new Parser(inputArray, symbolArray, 0);
+    Parser * parsed = new Parser(inputArray, symbolArray, inclusive);
 
     for(index = 0; index < parsed->count(); index++)
     {
@@ -43,12 +44,15 @@ int main()
         while(*(pointer + line) != '\0')
         {
             sentence += *(pointer + line);
+            line++;
         }
         if(sentence.size() > 0)
         {
             std::cout << sentence << std::endl;
         }
     }
+
+    delete parsed;
 
     return 0;
 }

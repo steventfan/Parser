@@ -11,7 +11,7 @@ class Parser
         Parser(char *, char *, bool = false);
         ~Parser();
         char * at(unsigned int);
-        int count();
+        unsigned int count();
     private:
         void parsing(char *, char *, bool);
         unsigned int size;
