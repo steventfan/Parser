@@ -1,12 +1,79 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 #include "parser.h"
 
 int main()
 {
-    std::string input = "Hello World !";
-    std::string symbol = " ";
-    bool inclusive = false;
+    char option = '\0';
+    bool inclusive;
+
+    while(option != 'y' && option != 'Y' && option != 'n' && option != 'N')
+    {
+        std::cout << "Include parsing symbols in parsed string? (y/n)" << std::endl;
+        std::cin >> option;
+        if(option == 'y' || option == 'Y')
+        {
+            inclusive = true;
+        }
+        else if(option == 'n' || option == 'N')
+        {
+            inclusive = false;
+        }
+        else
+        {
+            std::cout << "Invalid Input" << std::endl;
+        }
+    }
+
+    std::ifstream file;
+
+    file.open("string.txt");
+    if(!file)
+    {
+        std::cout << "Failed to open file string.txt" << std::endl;
+
+        return 1;
+    }
+
+    std::string input = "";
+
+    for(std::string reading; getline(file, reading); )
+    {
+        if(input.size() > 0)
+        {
+            input += '\n';
+        } else if(reading == "")
+        {
+            input = "\n";
+        }
+        input += reading;
+    }
+    file.close();
+
+    file.open("symbols.txt");
+    if(!file)
+    {
+        std::cout << "Failed to open file symbols.txt" << std::endl;
+
+        return 1;
+    }
+
+    std::string symbol = "";
+
+    for(std::string reading; getline(file, reading); )
+    {
+        if(symbol.size() > 0)
+        {
+            symbol += '\n';
+        } else if(reading == "")
+        {
+            symbol = "\n";
+        }
+        symbol += reading;
+    }
+    file.close();
+
     char * inputArray = new char [input.size() + 1];
     char * symbolArray = new char [symbol.size() + 1];
     unsigned int index = 0;
@@ -31,7 +98,7 @@ int main()
     {
         std::cout << *(symbolArray + index);
     }
-    std::cout << std::endl << std::endl << "~~~ Parsed Sentece: ~~~" << std::endl;
+    std::cout << std::endl << "~~~ Parsed Sentece: ~~~" << std::endl;
 
     Parser * parsed = new Parser(inputArray, symbolArray, inclusive);
 
