@@ -3,9 +3,13 @@
 Written in C++
 
 ## Versions
+### ***25/8/2018***
+**Version 1.1.0**
+* Streamlined testing allowing more customizable and efficient test cases
+
 ### ***24/8/2018***
 
-**Version 1.0**
+**Version 1.0.0**
 * Successfully tested, first working prototype
 * Fixed array initialization errors when compiled with *-pendantic* flag
 
