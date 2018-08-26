@@ -155,6 +155,9 @@ void Parser::parsing(char * string, char * symbol, bool inclusive)
         }
         tokenTemplateAt++;
     }
+
+    delete[] lineTemplate;
+
     *(tokenTemplate + tokenTemplateAt) = 0;
     tokenTemplateAt = 0;
     size = 0;
@@ -175,4 +178,6 @@ void Parser::parsing(char * string, char * symbol, bool inclusive)
     {
         token = 0;
     }
+
+    delete[] tokenTemplate;
 }
