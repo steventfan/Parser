@@ -3,6 +3,10 @@
 Written in C++
 
 ## Versions
+### ***26/8/2018***
+**Version 1.0.1**
+* Implemented deallocation of memory for dynamically allocated arrays of temporary variables
+
 ### ***25/8/2018***
 **Version 1.0.0**
 * Streamlined testing allowing more customizable and efficient test cases
