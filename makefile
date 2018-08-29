@@ -1,16 +1,16 @@
 $(shell mkdir -p bin)
 
 CC = g++
-CCFLAGS = -Wall -Werror -Wextra -pedantic
+CFLAGS = -Wall -Werror -Wextra -pedantic
 EXEC = bin/test
 SOURCES = $(wildcard src/*.cpp)
 OBJECTS = $(SOURCES:.cpp=.o)
 
 $(EXEC):$(OBJECTS)
-	$(CC) $(OBJECTS) -o $(EXEC)
+	$(CC) $(CFLAGS) $(OBJECTS) -o $(EXEC)
 
 %.o:%.cpp
-	$(CC) -c $(CCFLAGS) $< -o $@
+	$(CC) -c $(CFLAGS) $< -o $@
 
 clean:
 	rm -rfv bin
