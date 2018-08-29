@@ -28,7 +28,7 @@ int main()
 
     std::ifstream file;
 
-    file.open("string.txt");
+    file.open("inputs/string.txt");
     if(!file)
     {
         std::cout << "Failed to open file string.txt" << std::endl;
@@ -51,7 +51,7 @@ int main()
     }
     file.close();
 
-    file.open("symbols.txt");
+    file.open("inputs/symbols.txt");
     if(!file)
     {
         std::cout << "Failed to open file symbols.txt" << std::endl;
