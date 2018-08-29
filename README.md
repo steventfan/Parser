@@ -3,6 +3,12 @@
 Written in C++
 
 ## Versions
+
+Note versions are based on changes to the actual parser files: ***parser.h parser.cpp***
+### ***28/8/2018***
+**Version 1.0.1**
+* Created make file and reorganized files
+
 ### ***26/8/2018***
 **Version 1.0.1**
 * Implemented deallocation of memory for dynamically allocated arrays of temporary variables
