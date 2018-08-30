@@ -20,7 +20,7 @@ The bold parameters are optional. The first parameter refers to the string to be
 
 **Note:** All instances of *char* arrays that hold strings are expected to end with the null terminating value '*\0*'. The parser generates *char* arrays that end with '*\0*' and expect the user to pass in *char* array parameters that also end with '*\0*'. Failure to follow this standard may result in unintended consequences.
 
-A string is parsed into individual tokens that can be accessed using the *at(unsigned int)* function which returns a *char* pointer to the array holding the string. If no tokens are generated or an out of range parameter is passed in, *at(unsigned int)* will return a *char* pointer to *null*. The *count()* function returns the number of individual tokens there are.
+A string is parsed into individual tokens that can be accessed using the *at(unsigned int)* function which returns a *char* pointer to the array holding the string. If no tokens are generated or an out of range parameter is passed in, *at(unsigned int)* will return a *char* pointer to *null*. The *count()* function returns the number of individual tokens generated.
 
 **For example:**
 
