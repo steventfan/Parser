@@ -16,7 +16,7 @@ To use the parser, the user must construct a *Parser* object with the valid para
 * Parser(char \*, **char**, **bool**)
 * Parser(char \*, **char \***, **bool**)
 
-The bold parameters are optional. The first parameter refers to the string to be parsed, the second parameter refers to the symbols that the string will be parsed at, and the third parameter is a boolean value that determines whether the parsing symbol in parameter two be included in the parsed string (*true*) or not (*false*).
+The bold parameters are optional. The first parameter refers to the string to be parsed, the second parameter refers to the symbols that the string will be parsed at (defaults to empty character), and the third parameter is a boolean value that determines whether the parsing symbol in parameter two be included in the parsed string (*true*) or not (*false*) (defaults to *false*).
 
 **Note:** All instances of *char* arrays that hold strings are expected to end with the null terminating value '*\0*'. The parser generates *char* arrays that end with '*\0*' and expect the user to pass in *char* array parameters that also end with '*\0*'. Failure to follow this standard may result in unintended consequences.
 
