@@ -51,4 +51,4 @@ parsing symbol = " "
 
 include parsing symbol = *false*
 
-![Hello World !](images/example1.png)
+![Hello World !](/images/example1.PNG)
