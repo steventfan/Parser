@@ -39,3 +39,5 @@ include parse symbol in parsed string = *false*
 "d !"
 
 Where *at(0)*, *at(1)*, and *at(2)* are called for each line respectively. The *count()* function in this example returns 3.
+
+## How It Works
