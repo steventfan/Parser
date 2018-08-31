@@ -50,3 +50,5 @@ string = "Hello World !"
 parsing symbol = " "
 
 include parsing symbol = *false*
+
+![Hello World !](images/example1.png)
