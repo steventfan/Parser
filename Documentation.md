@@ -41,3 +41,6 @@ include parse symbol in parsed string = *false*
 Where *at(0)*, *at(1)*, and *at(2)* are called for each line respectively. The *count()* function in this example returns 3.
 
 ## How It Works
+The parser stores a parsed string in an array that stores pointers to *char* arrays holding each tokenized string. The class variable *token* pointer points to the first address of the token array.
+
+**Using the example above:**
