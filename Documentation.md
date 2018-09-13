@@ -53,7 +53,7 @@ parsing symbol = " "
 
 include parsing symbol = *false*
 
-![Hello World !](/images/example1.PNG)
+![Hello World !](/images/figure1.PNG)
 
 First, the parser creates a temporary token and tokenized string array. The size of the temporary arrays are sized to the worst-case scenarios:
 
@@ -61,15 +61,15 @@ First, the parser creates a temporary token and tokenized string array. The size
 
 **Case 1 (all characters are parsed with symbols included in string) (worst-case token array)**
 
-![Template](/images/example2.PNG)
+![Template](/images/figure2.PNG)
 
 **Case 2 (no characters are parsed) (worst-case tokenized string array)**
 
-![Template](/images/example3.PNG)
+![Template](/images/figure3.PNG)
 
 Thus, the resulting templates are created:
 
-![Template](/images/example4.PNG)
+![Template](/images/figure4.PNG)
 
 The string is copied into the temporary tokenized string array until a parsing symbol is detected. The null terminating character '*\0*' is then appended. A new resized *char* array is then created and copies from the temporary tokenized string array. The current temporary token array index then points to the newly created array. The temporary tokenized string array is reused for further string inputs.
 
@@ -77,10 +77,10 @@ The string is copied into the temporary tokenized string array until a parsing s
 
 **Using Example Presets**
 
-![Temporary Tokenized String Array](/images/example5.PNG)
+![Temporary Tokenized String Array](/images/figure5.PNG)
 
 Once the string is completely parsed, a new token array is created and points to the same addresses as the temporary token array. Any indices that point to null are not included in the new token array.
 
 **For example:**
 
-![Token Array](/images/example6.PNG)
+![Token Array](/images/figure6.PNG)
