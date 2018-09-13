@@ -86,3 +86,7 @@ Once the string is completely parsed, a new token array is created and points to
 **For example:**
 
 ![Token Array](/images/figure6.PNG)
+
+The temporary arrays are then deallocated when parsing is finished, leaving the final result shown below:
+
+![Hello World !](/images/figure1.PNG)
