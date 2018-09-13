@@ -52,3 +52,15 @@ parsing symbol = " "
 include parsing symbol = *false*
 
 ![Hello World !](/images/example1.PNG)
+
+First, the parser creates a temporary token and tokenized string array. The size of the temporary arrays are sized to the worst-case scenarios:
+
+**For example:**
+
+**Figure 1 (all characters are parsed with symbols included in string)**
+
+![Template](/images/example2.PNG)
+
+**Figure 2 (no characters are parsed)**
+
+![Template](/images/example3.PNG)
