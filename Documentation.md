@@ -43,7 +43,7 @@ Where *at(0)*, *at(1)*, and *at(2)* are called for each line respectively. The *
 ## How It Works
 The parser stores a parsed string in an array that stores pointers to *char* arrays holding each tokenized string. The class variable *token* pointer points to the first address of the token array.
 
-**For example:**
+**Example 1:**
 
 string = "Hello World !"
 
@@ -55,12 +55,30 @@ include parsing symbol = *false*
 
 First, the parser creates a temporary token and tokenized string array. The size of the temporary arrays are sized to the worst-case scenarios:
 
-**For example:**
+**Example 2:**
 
-**Figure 1 (all characters are parsed with symbols included in string)**
+**Figure 1 (all characters are parsed with symbols included in string) (worst-case token array)**
 
 ![Template](/images/example2.PNG)
 
-**Figure 2 (no characters are parsed)**
+**Figure 2 (no characters are parsed) (worst-case tokenized string array)**
 
 ![Template](/images/example3.PNG)
+
+Thus, the resulting templates are created:
+
+![Template](/images/example4.PNG)
+
+The string is copied into the temporary tokenized string array until a parsing symbol is detected. The null terminating character '*\0*' is then appended. A new resized *char* array is then created and copies from the temporary tokenized string array. The current temporary token array index then points to the newly created array.
+
+**Example 3:**
+
+**Using inputs from Example 1**
+
+![Temporary Tokenized String Array](/images/example5.PNG)
+
+Once the string is completely parsed, a new token array is created and points to the same addresses as the temporary token array. Any indices that point to null are dropped from the new token array.
+
+**Example 4:**
+
+![Token Array](/images/example6.PNG)
