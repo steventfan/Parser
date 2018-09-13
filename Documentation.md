@@ -69,7 +69,7 @@ Thus, the resulting templates are created:
 
 ![Template](/images/example4.PNG)
 
-The string is copied into the temporary tokenized string array until a parsing symbol is detected. The null terminating character '*\0*' is then appended. A new resized *char* array is then created and copies from the temporary tokenized string array. The current temporary token array index then points to the newly created array.
+The string is copied into the temporary tokenized string array until a parsing symbol is detected. The null terminating character '*\0*' is then appended. A new resized *char* array is then created and copies from the temporary tokenized string array. The current temporary token array index then points to the newly created array. The temporary tokenized string array is reused for further string inputs.
 
 **Example 3:**
 
