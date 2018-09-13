@@ -77,7 +77,7 @@ The string is copied into the temporary tokenized string array until a parsing s
 
 ![Temporary Tokenized String Array](/images/example5.PNG)
 
-Once the string is completely parsed, a new token array is created and points to the same addresses as the temporary token array. Any indices that point to null are dropped from the new token array.
+Once the string is completely parsed, a new token array is created and points to the same addresses as the temporary token array. Any indices that point to null are not included in the new token array.
 
 **Example 4:**
 
